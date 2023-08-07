@@ -10,15 +10,17 @@
 
         public abstract void Excluir();
 
-        //public virtual void Filtrar() { }
+        public virtual void Duplicar() { }
 
-        //public virtual void GerarPdf() { }
+        public virtual void Filtrar() { }
 
-        //public virtual void Visualizar() { }
+        public virtual void GerarPdf() { }
 
-        //public abstract UserControl ObtemListagem();
+        public virtual void Visualizar() { }
 
-        //public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
+        public abstract UserControl ObtemListagem();
+
+        public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
 
         public string ObterMensagemRodape()
         {

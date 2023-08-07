@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LocadoraMengão.Domínio.ModuloFuncionário
 {
-    public class ValidadorFuncionario : AbstractValidator<Funcionario>, IValidadorFuncionario
+    public class ValidadorFuncionario : AbstractValidator<Funcionario>
     {
         public ValidadorFuncionario()
         {
