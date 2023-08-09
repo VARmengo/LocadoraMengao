@@ -75,6 +75,19 @@ namespace LocadoraMengão
                 return default;
 
             return Guid.Parse(value.ToString());
+        }        
+        public static int SelecionarIdInt(this DataGridView grid)
+        {
+            const int firstLine = 0, firstColumn = 0;
+            if (grid.SelectedRows.Count == 0)
+                return default;
+
+            object value = grid.SelectedRows[firstLine].Cells[firstColumn].Value;
+
+            if (value == null)
+                return default;
+
+            return int.Parse(value.ToString());
         }
 
     }

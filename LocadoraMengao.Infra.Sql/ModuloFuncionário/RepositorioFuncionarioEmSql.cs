@@ -7,7 +7,7 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
     public class RepositorioFuncionarioEmSql :
         RepositorioEmSqlBase<Funcionario, MapeadorFuncionarioSql>, IRepositorioFuncionario
     {
-        public RepositorioFuncionarioEmSql(string connectionString) : base(connectionString)
+        public RepositorioFuncionarioEmSql(string connectionString) 
         {
 
         }

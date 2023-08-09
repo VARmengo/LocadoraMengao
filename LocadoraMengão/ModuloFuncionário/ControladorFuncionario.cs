@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using LocadoraMengão.Aplicacao.ModuloFuncionário;
 using LocadoraMengão.Domínio.ModuloFuncionário;
 using LocadoraMengão.WinApp.Compartilhado;
 
@@ -53,7 +54,7 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
 
             tela.onGravarRegistro += servicoFuncionario.Editar;
 
-            tela.ConfigurarDisciplina(funcionarioSelecionado);
+            tela.ConfigurarFuncionario(funcionarioSelecionado);
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -97,7 +98,7 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
-            return new ConfiguracaoToolboxFuncionario();
+            return new ConfigurarToolboxFuncionario();
         }
 
         public override UserControl ObtemListagem()
@@ -120,4 +121,5 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
 
             FormPrincipal.Instancia.AtualizarRodape(mensagemRodape);
         }
+    }
 }

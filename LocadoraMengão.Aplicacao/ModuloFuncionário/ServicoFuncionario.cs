@@ -8,27 +8,27 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
         private ValidadorFuncionario validadorFuncionario;
 
         public ServicoFuncionario(
-            IRepositorioFuncionario repositorioDisciplina,
-            ValidadorDisciplina validadorDisciplina)
+            IRepositorioFuncionario repositorioFuncionario,
+            ValidadorFuncionario validadorFuncionario)
         {
-            this.repositorioDisciplina = repositorioDisciplina;
-            this.validadorDisciplina = validadorDisciplina;
+            this.repositorioFuncionario = repositorioFuncionario;
+            this.validadorFuncionario = validadorFuncionario;
         }
 
         public Result Inserir(Funcionario funcionario)
         {
-            Log.Debug("Tentando inserir disciplina...{@d}", disciplina);
+            Log.Debug("Tentando inserir disciplina...{@d}", funcionario);
 
-            List<string> erros = ValidarDisciplina(disciplina);
+            List<string> erros = ValidarDisciplina(funcionario);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
 
             try
             {
-                repositorioFuncionario.Inserir(disciplina);
+                repositorioFuncionario.Inserir(funcionario);
 
-                Log.Debug("Disciplina {DisciplinaId} inserida com sucesso", disciplina.Id);
+                Log.Debug("Disciplina {DisciplinaId} inserida com sucesso", funcionario.Id);
 
                 return Result.Ok();
             }
@@ -36,24 +36,24 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             {
                 string msgErro = "Falha ao tentar inserir disciplina.";
 
-                Log.Error(exc, msgErro + "{@d}", disciplina);
+                Log.Error(exc, msgErro + "{@d}", funcionario);
 
                 return Result.Fail(msgErro);
             }
         }
 
-        public Result Editar(Disciplina disciplina)
+        public Result Editar(Funcionario funcionario)
         {
-            Log.Debug("Tentando editar disciplina...{@d}", disciplina);
+            Log.Debug("Tentando editar disciplina...{@d}", funcionario);
 
-            List<string> erros = ValidarDisciplina(disciplina);
+            List<string> erros = ValidarDisciplina(funcionario);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
 
             try
             {
-                repositorioDisciplina.Editar(disciplina);
+                repositorioFuncionario.Editar(funcionario);
 
                 Log.Debug("Funcionário {FuncionarioId} editada com sucesso", funcionario.Id);
 
@@ -63,19 +63,19 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             {
                 string msgErro = "Falha ao tentar editar funcionário.";
 
-                Log.Error(exc, msgErro + "{@d}", disciplina);
+                Log.Error(exc, msgErro + "{@d}", funcionario);
 
                 return Result.Fail(msgErro);
             }
         }
 
-        public Result Excluir(Disciplina disciplina)
+        public Result Excluir(Funcionario disciplina)
         {
             Log.Debug("Tentando excluir disciplina...{@d}", disciplina);
 
             try
             {
-                repositorioDisciplina.Excluir(disciplina);
+                repositorioFuncionario.Excluir(disciplina);
 
                 Log.Debug("Disciplina {DisciplinaId} excluída com sucesso", disciplina.Id);
 
@@ -95,13 +95,13 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             }
         }
 
-        private List<string> ValidarDisciplina(Disciplina disciplina)
+        private List<string> ValidarDisciplina(Funcionario funcionario)
         {
-            List<string> erros = validadorDisciplina.Validate(disciplina)
+            List<string> erros = validadorFuncionario.Validate(funcionario)
                 .Errors.Select(x => x.ErrorMessage).ToList();
 
-            if (NomeDuplicado(disciplina))
-                erros.Add($"Este nome '{disciplina.Nome}' já está sendo utilizado");
+            if (NomeDuplicado(funcionario))
+                erros.Add($"Este nome '{funcionario.Nome}' já está sendo utilizado");
 
             foreach (string erro in erros)
             {
@@ -111,13 +111,13 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             return erros;
         }
 
-        private bool NomeDuplicado(Disciplina disciplina)
+        private bool NomeDuplicado(Funcionario funcionario)
         {
-            Disciplina disciplinaEncontrada = repositorioDisciplina.SelecionarPorNome(disciplina.Nome);
+            Funcionario disciplinaEncontrada = repositorioFuncionario.SelecionarPorNome(funcionario.Nome);
 
             if (disciplinaEncontrada != null &&
-                disciplinaEncontrada.Id != disciplina.Id &&
-                disciplinaEncontrada.Nome == disciplina.Nome)
+                disciplinaEncontrada.Id != funcionario.Id &&
+                disciplinaEncontrada.Nome == funcionario.Nome)
             {
                 return true;
             }
