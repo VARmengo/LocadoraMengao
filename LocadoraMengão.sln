@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraMengão.WinApp", "LocadoraMengão\LocadoraMengão.WinApp.csproj", "{691233A6-7A36-49C3-8A98-2A79617A0A5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB1B66DE-6430-4952-9614-254A8C3EC52A} = {AB1B66DE-6430-4952-9614-254A8C3EC52A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentação", "1 - Apresentação", "{A65ACBF4-1B30-4B76-A577-606F28C0D997}"
 EndProject
@@ -23,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{4E9770CB-682
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Acesso a Dados", "4.1 - Acesso a Dados", "{6BB2EC1A-D1DB-4C0E-853E-3C0BCC2CF15F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraMengão.Aplicacao", "LocadoraMengão.Aplicacao\LocadoraMengão.Aplicacao.csproj", "{AB1B66DE-6430-4952-9614-254A8C3EC52A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraMengão.Aplicacao", "LocadoraMengão.Aplicacao\LocadoraMengão.Aplicacao.csproj", "{AB1B66DE-6430-4952-9614-254A8C3EC52A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
