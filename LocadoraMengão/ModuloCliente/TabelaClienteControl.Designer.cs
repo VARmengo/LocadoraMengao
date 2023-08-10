@@ -1,6 +1,6 @@
-﻿namespace LocadoraMengão.WinApp.ModuloFuncionário
+﻿namespace LocadoraMengão.WinApp.ModuloCliente
 {
-    partial class TabelaFuncionarioControl
+    partial class TabelaClienteControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -39,16 +39,16 @@
             grid.Location = new Point(0, 0);
             grid.Name = "grid";
             grid.RowTemplate.Height = 25;
-            grid.Size = new Size(295, 232);
-            grid.TabIndex = 0;
+            grid.Size = new Size(294, 233);
+            grid.TabIndex = 1;
             // 
-            // TabelaFuncionarioControl
+            // TabelaClienteControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaFuncionarioControl";
-            Size = new Size(295, 232);
+            Name = "TabelaClienteControl";
+            Size = new Size(294, 233);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

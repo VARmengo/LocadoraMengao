@@ -47,5 +47,10 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
                 DialogResult = DialogResult.None;
             }
         }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
             if (funcionarioSelecionado == null)
             {
                 MessageBox.Show("Selecione um funcionário primeiro",
-                "Edição de Compromissos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                "Edição de Funcionários", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 

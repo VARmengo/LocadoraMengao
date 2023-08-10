@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionario));
             txtNome = new TextBox();
             mkdDataAdmissao = new MaskedTextBox();
             txtSalario = new TextBox();
@@ -108,6 +109,7 @@
             btnSair.Size = new Size(88, 75);
             btnSair.TabIndex = 7;
             btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
             // 
             // FormFuncionario
             // 
@@ -123,6 +125,9 @@
             Controls.Add(mkdDataAdmissao);
             Controls.Add(txtNome);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "FormFuncionario";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Funcionários";
