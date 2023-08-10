@@ -1,7 +1,11 @@
+using LocadoraMengão.Aplicacao.ModuloCliente;
 using LocadoraMengão.Aplicacao.ModuloFuncionário;
+using LocadoraMengão.Domínio.ModuloCliente;
 using LocadoraMengão.Domínio.ModuloFuncionário;
+using LocadoraMengão.Infra.Sql.ModuloCliente;
 using LocadoraMengão.Infra.Sql.ModuloFuncionário;
 using LocadoraMengão.WinApp.Compartilhado;
+using LocadoraMengão.WinApp.ModuloCliente;
 using LocadoraMengão.WinApp.ModuloFuncionário;
 using Microsoft.Extensions.Configuration;
 
@@ -103,6 +107,7 @@ namespace LocadoraMengão
                .AddJsonFile("appsettings.json")
                .Build();
 
+
             var connectionString = configuracao.GetConnectionString("SqlServer");
 
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmSql(connectionString);
@@ -113,27 +118,15 @@ namespace LocadoraMengão
 
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
 
-            //    IRepositorioMateria repositorioMateria = new RepositorioMateriaEmSql(connectionString);
+            IRepositorioCliente repositorioCliente = new RepositorioClienteEmSql(connectionString);
 
-            //    ValidadorMateria validadorMateria = new ValidadorMateria();
-            //    ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
+            ValidadorCliente validadorCliente = new ValidadorCliente();
+            ServicoCliente servicoCliente = new ServicoCliente(repositorioCliente, validadorCliente);
 
-            //    controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
+            controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
-            //    IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql(connectionString);
+            //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql(connectionString);
 
-            //    ValidadorQuestao validadorQuestao = new ValidadorQuestao();
-            //    ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
-            //    controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
-
-            //    IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql(connectionString);
-
-            //    IGeradorArquivo geradorRelatorio = new GeradorTesteEmPdf();
-
-            //    ValidadorTeste validadorTeste = new ValidadorTeste();
-            //    ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
-
-            //    controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
         }
 
         public void AtualizarRodape()

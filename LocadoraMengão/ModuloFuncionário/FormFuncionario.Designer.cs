@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFuncionario));
             txtNome = new TextBox();
             mkdDataAdmissao = new MaskedTextBox();
             txtSalario = new TextBox();
@@ -126,6 +127,9 @@
             Controls.Add(mkdDataAdmissao);
             Controls.Add(txtNome);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "FormFuncionario";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
