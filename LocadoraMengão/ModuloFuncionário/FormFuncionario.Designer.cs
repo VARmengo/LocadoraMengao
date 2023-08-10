@@ -91,6 +91,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Cursor = Cursors.Hand;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Image = Properties.Resources.save;
             btnSalvar.Location = new Point(83, 176);
@@ -102,6 +103,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Image = Properties.Resources.close;
             btnSair.Location = new Point(198, 176);
@@ -129,6 +131,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormFuncionario";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Funcionários";
             ResumeLayout(false);

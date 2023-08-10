@@ -107,6 +107,7 @@ namespace LocadoraMengão
                .AddJsonFile("appsettings.json")
                .Build();
 
+
             var connectionString = configuracao.GetConnectionString("SqlServer");
 
             IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmSql(connectionString);
@@ -125,6 +126,7 @@ namespace LocadoraMengão
             controladores.Add("ControladorCliente", new ControladorCliente(repositorioCliente, servicoCliente));
 
             //IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql(connectionString);
+
         }
 
         public void AtualizarRodape()
@@ -212,6 +214,12 @@ namespace LocadoraMengão
         private void cuponsMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(controladores["ControladorCupons"]);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormFuncionario funci = new FormFuncionario();
+            funci.ShowDialog(); // Shows Form2
         }
     }
 }

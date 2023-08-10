@@ -40,10 +40,9 @@
             toolStripSeparator2 = new ToolStripSeparator();
             btnVisualizar = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            btnGerarPdf = new ToolStripButton();
-            toolStripSeparator1 = new ToolStripSeparator();
             btnFiltrar = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
+            btnGerarPdf = new ToolStripButton();
             labelTipoCadastro = new ToolStripLabel();
             menu = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
@@ -64,6 +63,7 @@
             // 
             // panelRegistros
             // 
+            panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
             panelRegistros.Location = new Point(0, 56);
             panelRegistros.Name = "panelRegistros";
@@ -90,7 +90,7 @@
             // 
             toolbox.Enabled = false;
             toolbox.ImageScalingSize = new Size(20, 20);
-            toolbox.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnDuplicar, btnExcluir, toolStripSeparator2, btnVisualizar, toolStripSeparator3, toolStripSeparator1, btnFiltrar, toolStripSeparator4, btnGerarPdf, labelTipoCadastro });
+            toolbox.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnDuplicar, btnExcluir, toolStripSeparator2, btnVisualizar, toolStripSeparator3, btnFiltrar, toolStripSeparator4, btnGerarPdf, labelTipoCadastro });
             toolbox.Location = new Point(0, 24);
             toolbox.Name = "toolbox";
             toolbox.Size = new Size(800, 32);
@@ -162,21 +162,6 @@
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 32);
             // 
-            // btnGerarPdf
-            // 
-            btnGerarPdf.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnGerarPdf.ImageScaling = ToolStripItemImageScaling.None;
-            btnGerarPdf.ImageTransparentColor = Color.Magenta;
-            btnGerarPdf.Name = "btnGerarPdf";
-            btnGerarPdf.Padding = new Padding(5);
-            btnGerarPdf.Size = new Size(70, 29);
-            btnGerarPdf.Text = "Gerar Pdf";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 32);
-            // 
             // btnFiltrar
             // 
             btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Text;
@@ -191,6 +176,16 @@
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
             toolStripSeparator4.Size = new Size(6, 32);
+            // 
+            // btnGerarPdf
+            // 
+            btnGerarPdf.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnGerarPdf.ImageScaling = ToolStripItemImageScaling.None;
+            btnGerarPdf.ImageTransparentColor = Color.Magenta;
+            btnGerarPdf.Name = "btnGerarPdf";
+            btnGerarPdf.Padding = new Padding(5);
+            btnGerarPdf.Size = new Size(70, 29);
+            btnGerarPdf.Text = "Gerar Pdf";
             // 
             // labelTipoCadastro
             // 
@@ -328,7 +323,6 @@
         private ToolStripButton btnVisualizar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btnGerarPdf;
-        private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripLabel labelTipoCadastro;

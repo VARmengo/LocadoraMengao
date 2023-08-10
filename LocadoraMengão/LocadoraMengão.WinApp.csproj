@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.15.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+
   </ItemGroup>
 
   <ItemGroup>
@@ -34,7 +35,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
+
+	<ItemGroup>
+    <Folder Include="ModuloCliente\" />
+    
     <Folder Include="ModuloAutomovel\" />
   </ItemGroup>
 

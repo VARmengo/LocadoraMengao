@@ -7,6 +7,7 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
     public partial class FormFuncionario : Form
     {
         private Funcionario funcionario;
+        private TabelaFuncionarioControl tabela;
         public event GravarRegistroDelegate<Funcionario> onGravarRegistro;
 
         public FormFuncionario()
@@ -46,6 +47,16 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
 
                 DialogResult = DialogResult.None;
             }
+            else if (resultado.IsSuccess)
+            {
+                FormPrincipal.Instancia.AtualizarRodape("Funcionário cadastrado com sucesso!");
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
