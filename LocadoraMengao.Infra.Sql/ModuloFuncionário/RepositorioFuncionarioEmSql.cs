@@ -7,7 +7,7 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
     public class RepositorioFuncionarioEmSql :
         RepositorioEmSqlBase<Funcionario, MapeadorFuncionarioSql>, IRepositorioFuncionario
     {
-        public RepositorioFuncionarioEmSql(string connectionString) 
+        public RepositorioFuncionarioEmSql(string connectionString)
         {
 
         }
@@ -17,22 +17,22 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
             @"INSERT INTO [tb_funcionarios]
                 (
                     [Nome]                   
-                    [DataAdmissao]
-                    [Salario]
+                   ,[DataAdmissao]
+                   ,[Salario]
                 )    
                  VALUES
                 (
                     @NOME
-                    @ADMISSAO
-                    @SALARIO
+                   ,@ADMISSAO
+                   ,@SALARIO
                 )";
 
         protected override string sqlEditar =>
             @"UPDATE [tb_funcionarios]	
 		        SET
 			        [Nome] = @NOME
-			        [DataAdmissao] = @ADMISSAO
-			        [Salario] = @SALARIO
+			       ,[DataAdmissao] = @ADMISSAO
+			       ,[Salario] = @SALARIO
 		        WHERE
 			        [Id] = @ID";
 
@@ -44,8 +44,8 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
         protected override string sqlSelecionarTodos =>
             @"SELECT 
 		            [Id]    FUNCIONARIO_ID
-		            [Nome]  FUNCIONARIO_NOME
-		            [DataAdmissao]  FUNCIONARIO_ADMISSAO
+		           ,[Nome]  FUNCIONARIO_NOME
+		           ,[DataAdmissao]  FUNCIONARIO_ADMISSAO
 		           ,[Salario]  FUNCIONARIO_SALARIO
 
 	            FROM 
@@ -54,8 +54,8 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
         protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            [Id]    FUNCIONARIO_ID
-		            [Nome]  FUNCIONARIO_NOME
-		            [DataAdmissao]  FUNCIONARIO_ADMISSAO
+		           ,[Nome]  FUNCIONARIO_NOME
+		           ,[DataAdmissao]  FUNCIONARIO_ADMISSAO
 		           ,[Salario]  FUNCIONARIO_SALARIO
 
 	            FROM 
@@ -67,8 +67,8 @@ namespace LocadoraMengão.Infra.Sql.ModuloFuncionário
         private string sqlSelecionarPorNome =>
             @"SELECT 
 		            [Id]    FUNCIONARIO_ID
-		            [Nome]  FUNCIONARIO_NOME
-		            [DataAdmissao]  FUNCIONARIO_ADMISSAO
+		           ,[Nome]  FUNCIONARIO_NOME
+		           ,[DataAdmissao]  FUNCIONARIO_ADMISSAO
 		           ,[Salario]  FUNCIONARIO_SALARIO
 
 	            FROM 

@@ -90,6 +90,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Cursor = Cursors.Hand;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Image = Properties.Resources.save;
             btnSalvar.Location = new Point(83, 176);
@@ -101,6 +102,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Image = Properties.Resources.close;
             btnSair.Location = new Point(198, 176);
@@ -108,6 +110,7 @@
             btnSair.Size = new Size(88, 75);
             btnSair.TabIndex = 7;
             btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
             // 
             // FormFuncionario
             // 
@@ -124,6 +127,7 @@
             Controls.Add(txtNome);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "FormFuncionario";
+            ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "Cadastro de Funcionários";
             ResumeLayout(false);

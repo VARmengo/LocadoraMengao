@@ -1,6 +1,9 @@
+using LocadoraMengão.Aplicacao.ModuloFuncionário;
 using LocadoraMengão.Domínio.ModuloFuncionário;
 using LocadoraMengão.Infra.Sql.ModuloFuncionário;
 using LocadoraMengão.WinApp.Compartilhado;
+using LocadoraMengão.WinApp.ModuloFuncionário;
+using Microsoft.Extensions.Configuration;
 
 namespace LocadoraMengão
 {
@@ -21,7 +24,7 @@ namespace LocadoraMengão
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            //ConfigurarControladores();
+            ConfigurarControladores();
         }
 
         public static FormPrincipal Instancia
@@ -93,45 +96,45 @@ namespace LocadoraMengão
             panelRegistros.Controls.Add(listagemControl);
         }
 
-        //private void ConfigurarControladores()
-        //{
-        //    var configuracao = new ConfigurationBuilder()
-        //       .SetBasePath(Directory.GetCurrentDirectory())
-        //       .AddJsonFile("appsettings.json")
-        //       .Build();
+        private void ConfigurarControladores()
+        {
+            var configuracao = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json")
+               .Build();
 
-        //    var connectionString = configuracao.GetConnectionString("SqlServer");
+            var connectionString = configuracao.GetConnectionString("SqlServer");
 
-        //    IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmSql(connectionString);
+            IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmSql(connectionString);
 
-        //    ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
+            ValidadorFuncionario validadorFuncionario = new ValidadorFuncionario();
 
-        //    ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
+            ServicoFuncionario servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, validadorFuncionario);
 
-        //    controladores.Add("ControladorDisciplina", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
 
-        //    IRepositorioMateria repositorioMateria = new RepositorioMateriaEmSql(connectionString);
+            //    IRepositorioMateria repositorioMateria = new RepositorioMateriaEmSql(connectionString);
 
-        //    ValidadorMateria validadorMateria = new ValidadorMateria();
-        //    ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
+            //    ValidadorMateria validadorMateria = new ValidadorMateria();
+            //    ServicoMateria servicoMateria = new ServicoMateria(repositorioMateria, validadorMateria);
 
-        //    controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
+            //    controladores.Add("ControladorMateria", new ControladorMateria(repositorioMateria, repositorioDisciplina, servicoMateria));
 
-        //    IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql(connectionString);
+            //    IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql(connectionString);
 
-        //    ValidadorQuestao validadorQuestao = new ValidadorQuestao();
-        //    ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
-        //    controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
+            //    ValidadorQuestao validadorQuestao = new ValidadorQuestao();
+            //    ServicoQuestao servicoQuestao = new ServicoQuestao(repositorioQuestao, validadorQuestao);
+            //    controladores.Add("ControladorQuestao", new ControladorQuestao(repositorioQuestao, repositorioDisciplina, servicoQuestao));
 
-        //    IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql(connectionString);
+            //    IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql(connectionString);
 
-        //    IGeradorArquivo geradorRelatorio = new GeradorTesteEmPdf();
+            //    IGeradorArquivo geradorRelatorio = new GeradorTesteEmPdf();
 
-        //    ValidadorTeste validadorTeste = new ValidadorTeste();
-        //    ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
+            //    ValidadorTeste validadorTeste = new ValidadorTeste();
+            //    ServicoTeste servicoTeste = new ServicoTeste(repositorioTeste, repositorioQuestao, validadorTeste, geradorRelatorio);
 
-        //    controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
-        //}
+            //    controladores.Add("ControladorTeste", new ControladorTeste(repositorioTeste, repositorioDisciplina, servicoTeste));
+        }
 
         public void AtualizarRodape()
         {
@@ -218,6 +221,12 @@ namespace LocadoraMengão
         private void cuponsMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(controladores["ControladorCupons"]);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormFuncionario funci = new FormFuncionario();
+            funci.ShowDialog(); // Shows Form2
         }
     }
 }

@@ -17,9 +17,9 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
 
         public Result Inserir(Funcionario funcionario)
         {
-            Log.Debug("Tentando inserir disciplina...{@d}", funcionario);
+            Log.Debug("Tentando inserir funcionário...{@d}", funcionario);
 
-            List<string> erros = ValidarDisciplina(funcionario);
+            List<string> erros = ValidarFuncionario(funcionario);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
@@ -28,13 +28,13 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             {
                 repositorioFuncionario.Inserir(funcionario);
 
-                Log.Debug("Disciplina {DisciplinaId} inserida com sucesso", funcionario.Id);
+                Log.Debug("funcionário {FuncionárioId} inserido com sucesso", funcionario.Id);
 
                 return Result.Ok();
             }
             catch (SqlException exc)
             {
-                string msgErro = "Falha ao tentar inserir disciplina.";
+                string msgErro = "Falha ao tentar inserir funcionário.";
 
                 Log.Error(exc, msgErro + "{@d}", funcionario);
 
@@ -44,9 +44,9 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
 
         public Result Editar(Funcionario funcionario)
         {
-            Log.Debug("Tentando editar disciplina...{@d}", funcionario);
+            Log.Debug("Tentando editar funcionário...{@d}", funcionario);
 
-            List<string> erros = ValidarDisciplina(funcionario);
+            List<string> erros = ValidarFuncionario(funcionario);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
@@ -69,15 +69,15 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             }
         }
 
-        public Result Excluir(Funcionario disciplina)
+        public Result Excluir(Funcionario funcionario)
         {
-            Log.Debug("Tentando excluir disciplina...{@d}", disciplina);
+            Log.Debug("Tentando excluir funcionário...{@d}", funcionario);
 
             try
             {
-                repositorioFuncionario.Excluir(disciplina);
+                repositorioFuncionario.Excluir(funcionario);
 
-                Log.Debug("Disciplina {DisciplinaId} excluída com sucesso", disciplina.Id);
+                Log.Debug("Funcionário {FuncionárioId} excluído com sucesso", funcionario.Id);
 
                 return Result.Ok();
             }
@@ -85,17 +85,17 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             {
                 List<string> erros = new List<string>();
 
-                string msgErro = ObterMensagemDeErro(ex);
+                string msgErro = "erro";
 
                 erros.Add(msgErro);
 
-                Log.Error(ex, msgErro + " {DisciplinaId}", disciplina.Id);
+                Log.Error(ex, msgErro + " {FuncionárioId}", funcionario.Id);
 
                 return Result.Fail(erros);
             }
         }
 
-        private List<string> ValidarDisciplina(Funcionario funcionario)
+        private List<string> ValidarFuncionario(Funcionario funcionario)
         {
             List<string> erros = validadorFuncionario.Validate(funcionario)
                 .Errors.Select(x => x.ErrorMessage).ToList();
@@ -113,11 +113,11 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
 
         private bool NomeDuplicado(Funcionario funcionario)
         {
-            Funcionario disciplinaEncontrada = repositorioFuncionario.SelecionarPorNome(funcionario.Nome);
+            Funcionario funcionarioEncontrado = repositorioFuncionario.SelecionarPorNome(funcionario.Nome);
 
-            if (disciplinaEncontrada != null &&
-                disciplinaEncontrada.Id != funcionario.Id &&
-                disciplinaEncontrada.Nome == funcionario.Nome)
+            if (funcionarioEncontrado != null &&
+                funcionarioEncontrado.Id != funcionario.Id &&
+                funcionarioEncontrado.Nome == funcionario.Nome)
             {
                 return true;
             }
@@ -125,16 +125,16 @@ namespace LocadoraMengão.Aplicacao.ModuloFuncionário
             return false;
         }
 
-        private static string ObterMensagemDeErro(SqlException ex)
-        {
-            string msgErro;
+        //private static string ObterMensagemDeErro(SqlException ex)
+        //{
+        //    string msgErro;
 
-            if (ex.Message.Contains("FK_TBMateria_TBDisciplina"))
-                msgErro = "Esta disciplina está relacionada com uma matéria e não pode ser excluída";
-            else
-                msgErro = "Esta disciplina não pode ser excluída";
+        //    if (ex.Message.Contains("FK_TBMateria_TBDisciplina"))
+        //        msgErro = "Esta disciplina está relacionada com uma matéria e não pode ser excluída";
+        //    else
+        //        msgErro = "Esta disciplina não pode ser excluída";
 
-            return msgErro;
-        }
+        //    return msgErro;
+        //}
     }
 }

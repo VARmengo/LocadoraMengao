@@ -68,9 +68,9 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
         {
             int id = tabelaFuncionario.ObtemIdSelecionado();
 
-            Funcionario disciplinaSelecionada = repositorioFuncionario.SelecionarPorId(id);
+            Funcionario funcionarioSelecionado = repositorioFuncionario.SelecionarPorId(id);
 
-            if (disciplinaSelecionada == null)
+            if (funcionarioSelecionado == null)
             {
                 MessageBox.Show("Selecione um funcionário primeiro",
                 "Exclusão de Funcionários", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -78,11 +78,11 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
             }
 
             DialogResult opcaoEscolhida = MessageBox.Show("Deseja realmente excluir o funcionário?",
-               "Exclusão de Disciplinas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+               "Exclusão de Funcionários", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Result resultado = servicoFuncionario.Excluir(disciplinaSelecionada);
+                Result resultado = servicoFuncionario.Excluir(funcionarioSelecionado);
 
                 if (resultado.IsFailed)
                 {
@@ -113,11 +113,11 @@ namespace LocadoraMengão.WinApp.ModuloFuncionário
 
         private void CarregarFuncionarios()
         {
-            List<Funcionario> disciplinas = repositorioFuncionario.SelecionarTodos();
+            List<Funcionario> funcionarios = repositorioFuncionario.SelecionarTodos();
 
-            tabelaFuncionario.AtualizarRegistros(disciplinas);
+            tabelaFuncionario.AtualizarRegistros(funcionarios);
 
-            mensagemRodape = string.Format("Visualizando {0} disciplina{1}", disciplinas.Count, disciplinas.Count == 1 ? "" : "s");
+            mensagemRodape = string.Format("Visualizando {0} funcionario{1}", funcionarios.Count, funcionarios.Count == 1 ? "" : "s");
 
             FormPrincipal.Instancia.AtualizarRodape(mensagemRodape);
         }
