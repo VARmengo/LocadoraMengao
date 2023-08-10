@@ -18,10 +18,10 @@ namespace LocadoraMengão.WinApp.Compartilhado
             form.MinimizeBox = false;
         }
 
-        //private static void Form_FormClosing(object? sender, FormClosingEventArgs e)
-        //{
-        //    TelaPrincipalForm.Instancia.AtualizarRodape();
-        //}
+        private static void Form_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            FormPrincipal.Instancia.AtualizarRodape();
+        }
     }
 
 }
